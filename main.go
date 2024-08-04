@@ -181,6 +181,8 @@ func exchangeCodeForToken(code string, port string, verifier string) (string, er
 	return tokenResp.AccessToken, nil
 }
 
+// Complies with IANA port range for dynamic or private ports
+// https://www.rfc-editor.org/rfc/rfc6335.html#section-8.1.2
 func getRandomPort() string {
 	pMin := 49152
 	pMax := 65535
@@ -197,6 +199,8 @@ func getRandomPort() string {
 	return strconv.Itoa(p)
 }
 
+// Requirements for PKCE verifier stated in RFC 7636
+// https://tools.ietf.org/html/rfc7636#section-4.1
 func generateVerifier() (string, error) {
 	bytes := make([]byte, 40)
 	_, err := rand.Read(bytes)
@@ -207,6 +211,8 @@ func generateVerifier() (string, error) {
 	return verifier, nil
 }
 
+// Requirements for PKCE challenge stated in RFC 7636
+// https://tools.ietf.org/html/rfc7636#section-4.2
 func generateS256Challenge(verifier string) string {
 	hash := sha256.New()
 	hash.Write([]byte(verifier))
