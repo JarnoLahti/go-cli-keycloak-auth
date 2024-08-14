@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"crypto/rand"
+	cryptorand "crypto/rand"
 	"crypto/sha256"
 	"encoding/base64"
 	"encoding/json"
@@ -23,7 +23,7 @@ import (
 
 const (
 	ClientId  = "cli-auth"
-	Issuer    = "http://localhost:8085/realms/master"
+	Issuer    = "http://localhost:8080/realms/master"
 	TokenFile = "token"
 )
 
@@ -203,7 +203,7 @@ func getRandomPort() string {
 // https://tools.ietf.org/html/rfc7636#section-4.1
 func generateVerifier() (string, error) {
 	bytes := make([]byte, 40)
-	_, err := rand.Read(bytes)
+	_, err := cryptorand.Read(bytes)
 	if err != nil {
 		return "", fmt.Errorf("failed to generate random bytes: %v", err)
 	}
