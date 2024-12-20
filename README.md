@@ -1,6 +1,6 @@
 # Authenticate cli application with keycloak
 
-This is a simple cli application that demonstrates how to authenticate a cli application with keycloak. Implementaion is part of a blog post that I wrote on [my blog]().
+This is a simple cli application that demonstrates how to authenticate a cli application with keycloak. Implementaion is part of a blog post that I wrote on [my blog](https://techstudylab.com/posts/authenticate-go-cli-app-using-keycloak/).
 
 ## Running the application
 
